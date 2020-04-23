@@ -15,9 +15,11 @@ class PhoneSearch {
      * @throws \Exception
      */
     function __construct() {
+        //设置php最大内存，大概会占用200M内存
+        ini_set('memory_limit', '512M');
         $path = __DIR__.'/../qqzeng-phone.dat';
         if(is_null($path)){
-            throw new \Exception('config:phonesearch.path is null');
+            throw new \Exception('qqzeng-phone.dat is null');
         }
         $this->fp = fopen($path, 'rb');
         if(!$this->fp) throw new \Exception($path.' file is null');
